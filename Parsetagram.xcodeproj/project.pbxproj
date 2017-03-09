@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		461D25EF1E6F7760007BD468 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461D25EE1E6F7760007BD468 /* AppDelegate.swift */; };
-		461D25F11E6F7760007BD468 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461D25F01E6F7760007BD468 /* ViewController.swift */; };
 		461D25F41E6F7760007BD468 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 461D25F21E6F7760007BD468 /* Main.storyboard */; };
 		461D25F71E6F7760007BD468 /* Parsetagram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 461D25F51E6F7760007BD468 /* Parsetagram.xcdatamodeld */; };
 		461D25F91E6F7760007BD468 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 461D25F81E6F7760007BD468 /* Assets.xcassets */; };
 		461D25FC1E6F7760007BD468 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 461D25FA1E6F7760007BD468 /* LaunchScreen.storyboard */; };
+		461E50121E6F80E200F96BD1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461E50111E6F80E200F96BD1 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		461D25EB1E6F7760007BD468 /* Parsetagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parsetagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		461D25EE1E6F7760007BD468 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		461D25F01E6F7760007BD468 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		461D25F31E6F7760007BD468 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		461D25F61E6F7760007BD468 /* Parsetagram.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Parsetagram.xcdatamodel; sourceTree = "<group>"; };
 		461D25F81E6F7760007BD468 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		461D25FB1E6F7760007BD468 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		461D25FD1E6F7760007BD468 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		461E50111E6F80E200F96BD1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +56,8 @@
 		461D25ED1E6F7760007BD468 /* Parsetagram */ = {
 			isa = PBXGroup;
 			children = (
+				461E50101E6F80A400F96BD1 /* View Controllers */,
 				461D25EE1E6F7760007BD468 /* AppDelegate.swift */,
-				461D25F01E6F7760007BD468 /* ViewController.swift */,
 				461D25F21E6F7760007BD468 /* Main.storyboard */,
 				461D25F81E6F7760007BD468 /* Assets.xcassets */,
 				461D25FA1E6F7760007BD468 /* LaunchScreen.storyboard */,
@@ -65,6 +65,14 @@
 				461D25F51E6F7760007BD468 /* Parsetagram.xcdatamodeld */,
 			);
 			path = Parsetagram;
+			sourceTree = "<group>";
+		};
+		461E50101E6F80A400F96BD1 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				461E50111E6F80E200F96BD1 /* LoginViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,7 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				461D25F11E6F7760007BD468 /* ViewController.swift in Sources */,
+				461E50121E6F80E200F96BD1 /* LoginViewController.swift in Sources */,
 				461D25F71E6F7760007BD468 /* Parsetagram.xcdatamodeld in Sources */,
 				461D25EF1E6F7760007BD468 /* AppDelegate.swift in Sources */,
 			);
@@ -304,6 +312,7 @@
 				461D26021E6F7760007BD468 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
