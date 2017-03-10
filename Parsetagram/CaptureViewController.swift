@@ -1,16 +1,14 @@
 //
-//  LoginViewController.swift
+//  CaptureViewController.swift
 //  Parsetagram
 //
-//  Created by Ryuji Mano on 3/7/17.
+//  Created by Ryuji Mano on 3/9/17.
 //  Copyright © 2017 Ryuji Mano. All rights reserved.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
-    @IBOutlet weak var usernameField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
+class CaptureViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +19,6 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func loginTapped(_ sender: Any) {
-    }
-    
-    @IBAction func signUpTapped(_ sender: Any) {
     }
     
 
