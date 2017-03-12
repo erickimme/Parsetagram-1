@@ -16,6 +16,7 @@
 		461E50141E725F8F00F96BD1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461E50131E725F8F00F96BD1 /* HomeViewController.swift */; };
 		461E50161E725F9F00F96BD1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461E50151E725F9F00F96BD1 /* ProfileViewController.swift */; };
 		461E50181E725FC700F96BD1 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461E50171E725FC700F96BD1 /* CaptureViewController.swift */; };
+		46FA6B381E750B0C00664C9B /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FA6B371E750B0C00664C9B /* PostTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		461E50131E725F8F00F96BD1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		461E50151E725F9F00F96BD1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		461E50171E725FC700F96BD1 /* CaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
+		46FA6B371E750B0C00664C9B /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		461D25ED1E6F7760007BD468 /* Parsetagram */ = {
 			isa = PBXGroup;
 			children = (
+				46FA6B361E750ADC00664C9B /* Views */,
 				461E50101E6F80A400F96BD1 /* View Controllers */,
 				461D25EE1E6F7760007BD468 /* AppDelegate.swift */,
 				461D25F21E6F7760007BD468 /* Main.storyboard */,
@@ -82,6 +85,14 @@
 				461E50171E725FC700F96BD1 /* CaptureViewController.swift */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		46FA6B361E750ADC00664C9B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				46FA6B371E750B0C00664C9B /* PostTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46FA6B381E750B0C00664C9B /* PostTableViewCell.swift in Sources */,
 				461E50121E6F80E200F96BD1 /* LoginViewController.swift in Sources */,
 				461E50181E725FC700F96BD1 /* CaptureViewController.swift in Sources */,
 				461D25F71E6F7760007BD468 /* Parsetagram.xcdatamodeld in Sources */,
