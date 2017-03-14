@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import Parse
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
