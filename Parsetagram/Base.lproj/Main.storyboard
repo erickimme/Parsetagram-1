@@ -74,7 +74,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8eh-K2-SgK">
-                                <rect key="frame" x="49" y="273" width="277" height="40"/>
+                                <rect key="frame" x="49" y="249" width="277" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="277" id="FK8-fw-f8m"/>
@@ -85,7 +85,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8Q6-lu-Pqf">
-                                <rect key="frame" x="49" y="321" width="277" height="40"/>
+                                <rect key="frame" x="49" y="297" width="277" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="10W-5q-kwB"/>
@@ -93,7 +93,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.44205338309999997" green="0.89701522440000003" blue="0.53980808359999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -108,10 +108,10 @@
                             <constraint firstAttribute="trailing" secondItem="ocb-RZ-p6L" secondAttribute="trailing" constant="89" id="eMO-hP-PKY"/>
                             <constraint firstItem="X3z-l0-Pyo" firstAttribute="top" secondItem="ocb-RZ-p6L" secondAttribute="bottom" constant="14" id="eVk-4Z-PAd"/>
                             <constraint firstItem="8Q6-lu-Pqf" firstAttribute="top" secondItem="8eh-K2-SgK" secondAttribute="bottom" constant="8" id="eZ1-eg-3R7"/>
-                            <constraint firstItem="8eh-K2-SgK" firstAttribute="top" secondItem="kXG-I7-l7c" secondAttribute="bottom" constant="81" id="fJw-Vi-Aqn"/>
+                            <constraint firstItem="8eh-K2-SgK" firstAttribute="top" secondItem="kXG-I7-l7c" secondAttribute="bottom" constant="57" id="fJw-Vi-Aqn"/>
                             <constraint firstItem="X3z-l0-Pyo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="88" id="lUD-4X-Iyz"/>
                             <constraint firstAttribute="trailing" secondItem="8Q6-lu-Pqf" secondAttribute="trailing" constant="49" id="o1D-1q-Ihl"/>
-                            <constraint firstItem="ocb-RZ-p6L" firstAttribute="top" secondItem="8Q6-lu-Pqf" secondAttribute="bottom" constant="20" id="rZ2-1B-Fl0"/>
+                            <constraint firstItem="ocb-RZ-p6L" firstAttribute="top" secondItem="8Q6-lu-Pqf" secondAttribute="bottom" constant="44" id="rZ2-1B-Fl0"/>
                             <constraint firstItem="8Q6-lu-Pqf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="49" id="rtI-zC-eYq"/>
                             <constraint firstItem="kXG-I7-l7c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="81" id="v6F-8V-B4U"/>
                         </constraints>

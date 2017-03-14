@@ -6,5 +6,6 @@ target 'Parsetagram' do
   use_frameworks!
 
   pod 'Parse'
+  pod 'MBProgressHUD'
 
 end
