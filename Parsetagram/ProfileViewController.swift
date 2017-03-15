@@ -21,6 +21,8 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func signOutTapped(_ sender: Any) {
+    }
 
     /*
     // MARK: - Navigation
