@@ -21,6 +21,12 @@ class CaptureViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func libraryTapped(_ sender: Any) {
+    }
+    
+    @IBAction func cameraTapped(_ sender: Any) {
+    }
 
     /*
     // MARK: - Navigation

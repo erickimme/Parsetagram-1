@@ -225,14 +225,65 @@
                     <view key="view" contentMode="scaleToFill" id="N0g-pD-Nbz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VH9-lN-ebc">
+                                <rect key="frame" x="112" y="332" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="6hb-c5-AkY"/>
+                                    <constraint firstAttribute="height" constant="150" id="Jq4-dO-1TZ"/>
+                                </constraints>
+                                <state key="normal" image="iconmonstr-photo-camera-9-240"/>
+                                <connections>
+                                    <action selector="cameraTapped:" destination="MnH-AL-nRy" eventType="touchUpInside" id="KIv-X3-Q27"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irP-ru-crB">
+                                <rect key="frame" x="112" y="75" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="SHw-NO-ZDx"/>
+                                    <constraint firstAttribute="height" constant="150" id="zYQ-dD-yz4"/>
+                                </constraints>
+                                <state key="normal" image="iconmonstr-picture-17-240"/>
+                                <connections>
+                                    <action selector="libraryTapped:" destination="MnH-AL-nRy" eventType="touchUpInside" id="duu-3R-J68"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post from Photo Library" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggb-4Z-dBA">
+                                <rect key="frame" x="82" y="233" width="210" height="28"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post from Camera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYg-wM-nsy">
+                                <rect key="frame" x="107" y="490" width="161" height="28"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ggb-4Z-dBA" secondAttribute="trailing" constant="83" id="1Mw-rI-GYg"/>
+                            <constraint firstItem="VH9-lN-ebc" firstAttribute="leading" secondItem="N0g-pD-Nbz" secondAttribute="leading" constant="112" id="6jA-kB-yuH"/>
+                            <constraint firstItem="VH9-lN-ebc" firstAttribute="top" secondItem="Ggb-4Z-dBA" secondAttribute="bottom" constant="71" id="D4C-NC-KyN"/>
+                            <constraint firstItem="irP-ru-crB" firstAttribute="top" secondItem="O8O-yg-b0g" secondAttribute="bottom" constant="55" id="Is6-lt-Hwy"/>
+                            <constraint firstItem="Jsp-3r-3BI" firstAttribute="top" secondItem="IYg-wM-nsy" secondAttribute="bottom" constant="100" id="MSA-Lu-Onm"/>
+                            <constraint firstAttribute="trailing" secondItem="irP-ru-crB" secondAttribute="trailing" constant="113" id="Sc5-PX-Zwi"/>
+                            <constraint firstItem="IYg-wM-nsy" firstAttribute="leading" secondItem="N0g-pD-Nbz" secondAttribute="leading" constant="107" id="VTX-9A-MEE"/>
+                            <constraint firstAttribute="trailing" secondItem="VH9-lN-ebc" secondAttribute="trailing" constant="113" id="bir-1g-lnK"/>
+                            <constraint firstItem="Ggb-4Z-dBA" firstAttribute="top" secondItem="irP-ru-crB" secondAttribute="bottom" constant="8" id="cHJ-ac-Hi0"/>
+                            <constraint firstItem="Ggb-4Z-dBA" firstAttribute="leading" secondItem="N0g-pD-Nbz" secondAttribute="leading" constant="82" id="eCu-VS-frb"/>
+                            <constraint firstAttribute="trailing" secondItem="IYg-wM-nsy" secondAttribute="trailing" constant="107" id="msM-p5-sO6"/>
+                            <constraint firstItem="irP-ru-crB" firstAttribute="leading" secondItem="N0g-pD-Nbz" secondAttribute="leading" constant="112" id="rIM-Cg-DRM"/>
+                            <constraint firstItem="IYg-wM-nsy" firstAttribute="top" secondItem="VH9-lN-ebc" secondAttribute="bottom" constant="8" id="tFP-b8-1jX"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Capture" id="fE7-Yn-FyD"/>
                     <navigationItem key="navigationItem" id="rAS-Cq-58b"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUs-hL-N6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1978" y="139"/>
+            <point key="canvasLocation" x="1976.8" y="138.98050974512745"/>
         </scene>
         <!--Profile-->
         <scene sceneID="xEe-Za-1zB">
@@ -281,4 +332,8 @@
             <point key="canvasLocation" x="992.79999999999995" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iconmonstr-photo-camera-9-240" width="240" height="240"/>
+        <image name="iconmonstr-picture-17-240" width="240" height="240"/>
+    </resources>
 </document>
