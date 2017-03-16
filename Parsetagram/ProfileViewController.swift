@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ProfileViewController: UIViewController {
 
@@ -22,6 +23,18 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func signOutTapped(_ sender: Any) {
+        PFUser.logOutInBackground { (error: Error?) in
+            if error != nil {
+                let alert = UIAlertController(title: "An Error Occurred", message: error?.localizedDescription, preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                
+                alert.addAction(action)
+                self.show(alert, sender: nil)
+            }
+            else {
+                self.performSegue(withIdentifier: "logoutSegue", sender: nil)
+            }
+        }
     }
 
     /*

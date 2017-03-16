@@ -227,7 +227,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VH9-lN-ebc">
-                                <rect key="frame" x="112" y="332" width="150" height="150"/>
+                                <rect key="frame" x="112" y="352" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="6hb-c5-AkY"/>
                                     <constraint firstAttribute="height" constant="150" id="Jq4-dO-1TZ"/>
@@ -238,7 +238,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irP-ru-crB">
-                                <rect key="frame" x="112" y="75" width="150" height="150"/>
+                                <rect key="frame" x="112" y="95" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="SHw-NO-ZDx"/>
                                     <constraint firstAttribute="height" constant="150" id="zYQ-dD-yz4"/>
@@ -249,13 +249,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post from Photo Library" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggb-4Z-dBA">
-                                <rect key="frame" x="82" y="233" width="210" height="28"/>
+                                <rect key="frame" x="82" y="253" width="210" height="28"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post from Camera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYg-wM-nsy">
-                                <rect key="frame" x="107" y="490" width="161" height="28"/>
+                                <rect key="frame" x="107" y="510" width="161" height="28"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -266,8 +266,8 @@
                             <constraint firstAttribute="trailing" secondItem="Ggb-4Z-dBA" secondAttribute="trailing" constant="83" id="1Mw-rI-GYg"/>
                             <constraint firstItem="VH9-lN-ebc" firstAttribute="leading" secondItem="N0g-pD-Nbz" secondAttribute="leading" constant="112" id="6jA-kB-yuH"/>
                             <constraint firstItem="VH9-lN-ebc" firstAttribute="top" secondItem="Ggb-4Z-dBA" secondAttribute="bottom" constant="71" id="D4C-NC-KyN"/>
-                            <constraint firstItem="irP-ru-crB" firstAttribute="top" secondItem="O8O-yg-b0g" secondAttribute="bottom" constant="55" id="Is6-lt-Hwy"/>
-                            <constraint firstItem="Jsp-3r-3BI" firstAttribute="top" secondItem="IYg-wM-nsy" secondAttribute="bottom" constant="100" id="MSA-Lu-Onm"/>
+                            <constraint firstItem="irP-ru-crB" firstAttribute="top" secondItem="O8O-yg-b0g" secondAttribute="bottom" constant="75" id="Is6-lt-Hwy"/>
+                            <constraint firstItem="Jsp-3r-3BI" firstAttribute="top" secondItem="IYg-wM-nsy" secondAttribute="bottom" constant="80" id="MSA-Lu-Onm"/>
                             <constraint firstAttribute="trailing" secondItem="irP-ru-crB" secondAttribute="trailing" constant="113" id="Sc5-PX-Zwi"/>
                             <constraint firstItem="IYg-wM-nsy" firstAttribute="leading" secondItem="N0g-pD-Nbz" secondAttribute="leading" constant="107" id="VTX-9A-MEE"/>
                             <constraint firstAttribute="trailing" secondItem="VH9-lN-ebc" secondAttribute="trailing" constant="113" id="bir-1g-lnK"/>
@@ -309,6 +309,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="jbP-mC-Fzz"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="logoutSegue" id="5vH-cZ-Ymr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3f-S9-LGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -317,7 +320,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="o2O-JO-2dN">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="MbK-8L-jyB" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="homeViewController" automaticallyAdjustsScrollViewInsets="NO" id="MbK-8L-jyB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Q9x-LK-G9s">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -325,8 +328,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="MnH-AL-nRy" kind="relationship" relationship="viewControllers" id="Qz7-WG-MML"/>
                         <segue destination="XUe-Av-PzR" kind="relationship" relationship="viewControllers" id="bZu-bi-McD"/>
+                        <segue destination="MnH-AL-nRy" kind="relationship" relationship="viewControllers" id="Qz7-WG-MML"/>
                         <segue destination="njF-TF-LCf" kind="relationship" relationship="viewControllers" id="2s0-Rq-ESd"/>
                     </connections>
                 </tabBarController>
