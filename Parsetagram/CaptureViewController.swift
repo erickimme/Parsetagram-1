@@ -9,6 +9,23 @@
 import UIKit
 
 class CaptureViewController: UIViewController {
+    @IBOutlet weak var postView: UIImageView!
+    @IBOutlet weak var captionField: UITextField!
+    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var libraryButton: UIButton!
+    @IBOutlet weak var libraryLabel: UILabel!
+    @IBOutlet weak var cameraLabel: UILabel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        postView.isHidden = true
+        captionField.isHidden = true
+        captionField.isUserInteractionEnabled = false
+        postButton.isHidden = true
+        postButton.isUserInteractionEnabled = false
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +44,10 @@ class CaptureViewController: UIViewController {
     
     @IBAction func cameraTapped(_ sender: Any) {
     }
+    
+    @IBAction func postTapped(_ sender: Any) {
+    }
+    
 
     /*
     // MARK: - Navigation

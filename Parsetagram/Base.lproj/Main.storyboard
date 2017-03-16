@@ -260,26 +260,65 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nMW-gQ-LA5">
+                                <rect key="frame" x="0.0" y="38" width="375" height="375"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="375" id="52R-ho-CsV"/>
+                                    <constraint firstAttribute="width" constant="375" id="U9y-6H-zN5"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e8r-hJ-1ri">
+                                <rect key="frame" x="16" y="421" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lc1-sy-wwK">
+                                <rect key="frame" x="172" y="472" width="31" height="30"/>
+                                <state key="normal" title="Post"/>
+                                <connections>
+                                    <action selector="postTapped:" destination="MnH-AL-nRy" eventType="touchUpInside" id="HME-o4-Rk4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Ggb-4Z-dBA" secondAttribute="trailing" constant="83" id="1Mw-rI-GYg"/>
                             <constraint firstItem="VH9-lN-ebc" firstAttribute="leading" secondItem="N0g-pD-Nbz" secondAttribute="leading" constant="112" id="6jA-kB-yuH"/>
+                            <constraint firstItem="e8r-hJ-1ri" firstAttribute="leading" secondItem="N0g-pD-Nbz" secondAttribute="leading" constant="16" id="8oG-Iw-BUZ"/>
+                            <constraint firstAttribute="bottom" secondItem="Lc1-sy-wwK" secondAttribute="bottom" constant="165" id="94X-lM-1te"/>
                             <constraint firstItem="VH9-lN-ebc" firstAttribute="top" secondItem="Ggb-4Z-dBA" secondAttribute="bottom" constant="71" id="D4C-NC-KyN"/>
                             <constraint firstItem="irP-ru-crB" firstAttribute="top" secondItem="O8O-yg-b0g" secondAttribute="bottom" constant="75" id="Is6-lt-Hwy"/>
                             <constraint firstItem="Jsp-3r-3BI" firstAttribute="top" secondItem="IYg-wM-nsy" secondAttribute="bottom" constant="80" id="MSA-Lu-Onm"/>
+                            <constraint firstAttribute="trailing" secondItem="nMW-gQ-LA5" secondAttribute="trailing" id="QbO-SH-QB1"/>
+                            <constraint firstItem="Lc1-sy-wwK" firstAttribute="top" secondItem="e8r-hJ-1ri" secondAttribute="bottom" constant="21" id="R62-X4-Qwn"/>
                             <constraint firstAttribute="trailing" secondItem="irP-ru-crB" secondAttribute="trailing" constant="113" id="Sc5-PX-Zwi"/>
+                            <constraint firstAttribute="trailing" secondItem="e8r-hJ-1ri" secondAttribute="trailing" constant="16" id="UsG-bj-Nth"/>
                             <constraint firstItem="IYg-wM-nsy" firstAttribute="leading" secondItem="N0g-pD-Nbz" secondAttribute="leading" constant="107" id="VTX-9A-MEE"/>
                             <constraint firstAttribute="trailing" secondItem="VH9-lN-ebc" secondAttribute="trailing" constant="113" id="bir-1g-lnK"/>
                             <constraint firstItem="Ggb-4Z-dBA" firstAttribute="top" secondItem="irP-ru-crB" secondAttribute="bottom" constant="8" id="cHJ-ac-Hi0"/>
                             <constraint firstItem="Ggb-4Z-dBA" firstAttribute="leading" secondItem="N0g-pD-Nbz" secondAttribute="leading" constant="82" id="eCu-VS-frb"/>
+                            <constraint firstAttribute="trailing" secondItem="Lc1-sy-wwK" secondAttribute="trailing" constant="172" id="fbE-cw-JOg"/>
+                            <constraint firstItem="e8r-hJ-1ri" firstAttribute="top" secondItem="nMW-gQ-LA5" secondAttribute="bottom" constant="8" id="jc5-0I-oqa"/>
                             <constraint firstAttribute="trailing" secondItem="IYg-wM-nsy" secondAttribute="trailing" constant="107" id="msM-p5-sO6"/>
+                            <constraint firstItem="nMW-gQ-LA5" firstAttribute="top" secondItem="O8O-yg-b0g" secondAttribute="bottom" constant="18" id="nbg-NQ-Wkf"/>
                             <constraint firstItem="irP-ru-crB" firstAttribute="leading" secondItem="N0g-pD-Nbz" secondAttribute="leading" constant="112" id="rIM-Cg-DRM"/>
+                            <constraint firstItem="nMW-gQ-LA5" firstAttribute="leading" secondItem="N0g-pD-Nbz" secondAttribute="leading" id="rf1-XF-fHa"/>
+                            <constraint firstItem="Lc1-sy-wwK" firstAttribute="leading" secondItem="N0g-pD-Nbz" secondAttribute="leading" constant="172" id="rjJ-4I-qgd"/>
                             <constraint firstItem="IYg-wM-nsy" firstAttribute="top" secondItem="VH9-lN-ebc" secondAttribute="bottom" constant="8" id="tFP-b8-1jX"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Capture" id="fE7-Yn-FyD"/>
                     <navigationItem key="navigationItem" id="rAS-Cq-58b"/>
+                    <connections>
+                        <outlet property="cameraButton" destination="VH9-lN-ebc" id="QWc-De-XuS"/>
+                        <outlet property="cameraLabel" destination="IYg-wM-nsy" id="eZd-vi-VuL"/>
+                        <outlet property="captionField" destination="e8r-hJ-1ri" id="laG-Ai-Wiq"/>
+                        <outlet property="libraryButton" destination="irP-ru-crB" id="rgE-n2-z7u"/>
+                        <outlet property="libraryLabel" destination="Ggb-4Z-dBA" id="tTb-fa-YQR"/>
+                        <outlet property="postButton" destination="Lc1-sy-wwK" id="FFL-58-ZXa"/>
+                        <outlet property="postView" destination="nMW-gQ-LA5" id="yiA-Ie-Ox7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUs-hL-N6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
