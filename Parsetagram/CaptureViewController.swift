@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CaptureViewController: UIViewController {
+class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var postView: UIImageView!
     @IBOutlet weak var captionField: UITextField!
     @IBOutlet weak var postButton: UIButton!
@@ -40,6 +40,12 @@ class CaptureViewController: UIViewController {
     
     
     @IBAction func libraryTapped(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        
+        show(imagePicker, sender: nil)
     }
     
     @IBAction func cameraTapped(_ sender: Any) {
@@ -48,6 +54,15 @@ class CaptureViewController: UIViewController {
     @IBAction func postTapped(_ sender: Any) {
     }
     
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let original = info[UIImagePickerControllerOriginalImage] as! UIImage!
+        let edited = info[UIImagePickerControllerEditedImage] as! UIImage!
+        
+        
+        
+        dismiss(animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation
