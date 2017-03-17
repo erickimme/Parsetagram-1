@@ -49,17 +49,24 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func cameraTapped(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .camera
+        
+        show(imagePicker, sender: nil)
     }
     
     @IBAction func postTapped(_ sender: Any) {
+        
     }
     
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let original = info[UIImagePickerControllerOriginalImage] as! UIImage!
+//        let original = info[UIImagePickerControllerOriginalImage] as! UIImage!
         let edited = info[UIImagePickerControllerEditedImage] as! UIImage!
         
-        
+        postView.image = edited
         
         dismiss(animated: true, completion: nil)
     }
