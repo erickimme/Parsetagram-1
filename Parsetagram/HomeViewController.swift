@@ -13,6 +13,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
 
     var posts: [PFObject]?
+    var images: [UIImage]?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -51,17 +52,27 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
         
-        let post = posts?[indexPath.row]
+        let post = posts?[(posts?.count)! - indexPath.row - 1]
         
-        cell.usernameLabel.text = post?["author"] as! String
-        cell.captionLabel.text = post?["caption"] as! String
+        let user = post?["author"] as? PFUser
+        try! user?.fetchIfNeeded()
+        if let username = user?.username {
+            cell.usernameLabel.text = username
+        }
+        cell.captionLabel.text = post?["caption"] as? String
         if let file = post?["media"] as? PFFile {
             file.getDataInBackground(block: { (data: Data?, error: Error?) in
-                <#code#>
+                if (error != nil) {
+                    cell.postView.image = #imageLiteral(resourceName: "iconmonstr-picture-17-240")
+                }
+                else {
+                    cell.postView.image = UIImage(data: data!)
+                }
             })
         }
         
         return cell
+        
     }
     
     
