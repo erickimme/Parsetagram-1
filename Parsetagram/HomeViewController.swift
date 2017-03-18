@@ -49,7 +49,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
+        
+        let post = posts?[indexPath.row]
+        
+        cell.usernameLabel.text = post?["author"] as! String
+        cell.captionLabel.text = post?["caption"] as! String
+        if let file = post?["media"] as? PFFile {
+            file.getDataInBackground(block: { (data: Data?, error: Error?) in
+                <#code#>
+            })
+        }
         
         return cell
     }
