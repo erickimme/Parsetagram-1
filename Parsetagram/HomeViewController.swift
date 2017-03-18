@@ -12,13 +12,12 @@ import Parse
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
 
-    var posts: [PFObject]!
+    var posts: [PFObject]?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        
-        tableView.reloadData()
+        getImages()
     }
 
     override func viewWillLayoutSubviews() {
@@ -42,13 +41,31 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count ?? 0
+        if let posts = posts {
+            return posts.count
+        }
+        return 0
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath)
         
         return cell
+    }
+    
+    
+    func getImages() {
+        Post.getImages(success: { (posts: [PFObject]) in
+            self.posts = posts
+            self.tableView.reloadData()
+        }) { (error: Error) in
+            let alert = UIAlertController(title: "An Error Occurred", message: error.localizedDescription, preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            
+            alert.addAction(action)
+            self.show(alert, sender: nil)
+        }
     }
 
     /*
