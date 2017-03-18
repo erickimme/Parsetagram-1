@@ -53,4 +53,16 @@ class Post: NSObject {
         }
         return nil
     }
+    
+    class func getImages(success: @escaping ([PFObject]) -> (), failure: @escaping (Error) -> ()) {
+        let query = PFQuery(className: "Post")
+        query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if error != nil {
+                failure(error!)
+            }
+            else {
+                success(posts!)
+            }
+        }
+    }
 }
