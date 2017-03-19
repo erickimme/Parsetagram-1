@@ -11,31 +11,35 @@ import Parse
 
 class Post: NSObject {
     
-    
-    var username: String?
-    var post: UIImage?
-    var caption: String?
-    var likesCount: Int?
-    var commentsCount: Int?
+    var username: String = ""
+    var post: UIImage = #imageLiteral(resourceName: "iconmonstr-picture-17-240")
+    var caption: String = ""
+    var likesCount: Int = 0
+    var commentsCount: Int = 0
     
     init(_ post: PFObject) {
+        super.init()
         self.post = #imageLiteral(resourceName: "iconmonstr-picture-17-240")
-        if let file = post["media"] as? PFFile {
-            file.getDataInBackground(block: { (data: Data?, error: Error?) in
-                if error == nil {
-                    self.post = UIImage(data: data!)
-                }
-            })
-        }
         let user = post["author"] as? PFUser
         if let user = user {
             try! user.fetchIfNeeded()
-            username = user.username
+            self.username = user.username!
         }
-        caption = post["caption"] as? String
-        likesCount = post["likesCount"] as? Int
-        commentsCount = post["commentsCount"] as? Int
+        self.caption = post["caption"] as? String ?? ""
+        self.likesCount = post["likesCount"] as? Int ?? 0
+        self.commentsCount = post["commentsCount"] as? Int ?? 0
+        if let file = post["media"] as? PFFile {
+            getPost(file)
+        }
         
+    }
+    
+    func getPost(_ file: PFFile) {
+        file.getDataInBackground(block: { (data: Data?, error: Error?) in
+            if error == nil {
+                self.post = UIImage(data: data!)!
+            }
+        })
     }
     
     /**
