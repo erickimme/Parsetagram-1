@@ -74,6 +74,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.usernameLabel.text = post?.username
         cell.captionLabel.text = post?.caption
+        cell.postView.contentMode = .scaleAspectFill
         cell.postView.image = post?.post
         
         return cell
