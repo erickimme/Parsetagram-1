@@ -2,7 +2,7 @@
 
 **Parsetagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: **15** hours spent in total
 
 ## User Stories
 
@@ -16,33 +16,35 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Show the username and creation time for each post
-- [ ] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse.
-- [ ] User Profiles:
-   - [ ] Allow the logged in user to add a profile photo
-   - [ ] Display the profile photo with each post
-   - [ ] Tapping on a post's username or profile photo goes to that user's profile page
+- [X] Show the username and creation time for each post
+- [X] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse.
+- [X] User Profiles:
+   - [X] Allow the logged in user to add a profile photo
+   - [X] Display the profile photo with each post
+   - [X] Tapping on a post's username or profile photo goes to that user's profile page
 
 The following **additional** features are implemented:
 
-- [ ] Add 'like' feature
+- [X] Implemented AutoLayout to each ViewController
+- [X] Implemented User Post "Time line"
+- [X] Add profile pictures to each post
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. 
-2. 
+1. Implementing sliding feature when keyboard pops up
+2. Better way to implement the parsing of the posts
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-
+![alt text](https://github.com/ryujimano/Parsetagram/blob/master/ParsetagramDemo.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-
+One challenge that I faced while developing this app was the parsing of each of the posts. I was able to make the refreshing of the home view a little better, but it still refreshes unnecessarily when the view appears.
 
 ## License
 
