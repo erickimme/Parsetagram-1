@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
@@ -18,6 +19,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         getImages()
     }
 
@@ -74,7 +76,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.usernameLabel.text = post?.username
         cell.captionLabel.text = post?.caption
-        cell.postView.contentMode = .scaleAspectFill
         cell.postView.image = post?.post
         
         return cell
@@ -86,9 +87,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         Post.getImages(success: { (posts: [PFObject]) in
             var arr: [Post] = []
             for post in posts {
-                arr.append(Post(post))
+                arr.append(Post(post, self.tableView))
             }
             self.posts = arr
+            MBProgressHUD.hide(for: self.view, animated: true)
             self.tableView.reloadData()
         }) { (error: Error) in
             let alert = UIAlertController(title: "An Error Occurred", message: error.localizedDescription, preferredStyle: .alert)

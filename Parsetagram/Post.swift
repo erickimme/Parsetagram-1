@@ -8,18 +8,20 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class Post: NSObject {
     
     var username: String = ""
-    var post: UIImage = #imageLiteral(resourceName: "iconmonstr-picture-17-240")
+    var post: UIImage = #imageLiteral(resourceName: "iconmonstr-picture-1-64")
+    //var post: UIImageView!
     var caption: String = ""
     var likesCount: Int = 0
     var commentsCount: Int = 0
     
-    init(_ post: PFObject) {
+    init(_ post: PFObject, _ tableView: UITableView) {
         super.init()
-        self.post = #imageLiteral(resourceName: "iconmonstr-picture-17-240")
+        self.post = #imageLiteral(resourceName: "iconmonstr-picture-1-64")
         let user = post["author"] as? PFUser
         if let user = user {
             try! user.fetchIfNeeded()
@@ -29,16 +31,19 @@ class Post: NSObject {
         self.likesCount = post["likesCount"] as? Int ?? 0
         self.commentsCount = post["commentsCount"] as? Int ?? 0
         if let file = post["media"] as? PFFile {
-            getPost(file)
+            //MBProgressHUD.showAdded(to: self.post, animated: true)
+            getPost(file, tableView)
         }
         
     }
     
-    func getPost(_ file: PFFile) {
+    func getPost(_ file: PFFile, _ tableView: UITableView) {
         file.getDataInBackground(block: { (data: Data?, error: Error?) in
             if error == nil {
                 self.post = UIImage(data: data!)!
             }
+            tableView.reloadData()
+            //MBProgressHUD.hide(for: self.post, animated: true)
         })
     }
     
