@@ -54,18 +54,6 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         show(imagePicker, sender: nil)
         
-        libraryLabel.isHidden = true
-        libraryButton.isHidden = true
-        libraryButton.isUserInteractionEnabled = false
-        cameraLabel.isHidden = true
-        cameraButton.isHidden = true
-        cameraButton.isUserInteractionEnabled = false
-        
-        postView.isHidden = false
-        captionField.isHidden = false
-        captionField.isUserInteractionEnabled = true
-        postButton.isHidden = false
-        postButton.isUserInteractionEnabled = true
     }
     
     @IBAction func cameraTapped(_ sender: Any) {
@@ -75,19 +63,6 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         imagePicker.sourceType = .camera
         
         show(imagePicker, sender: nil)
-        
-        libraryLabel.isHidden = true
-        libraryButton.isHidden = true
-        libraryButton.isUserInteractionEnabled = false
-        cameraLabel.isHidden = true
-        cameraButton.isHidden = true
-        cameraButton.isUserInteractionEnabled = false
-        
-        postView.isHidden = false
-        captionField.isHidden = false
-        captionField.isUserInteractionEnabled = true
-        postButton.isHidden = false
-        postButton.isUserInteractionEnabled = true
     }
     
     @IBAction func postTapped(_ sender: Any) {
@@ -127,6 +102,20 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         let edited = info[UIImagePickerControllerEditedImage] as! UIImage!
         
         postView.image = edited
+        
+        
+        libraryLabel.isHidden = true
+        libraryButton.isHidden = true
+        libraryButton.isUserInteractionEnabled = false
+        cameraLabel.isHidden = true
+        cameraButton.isHidden = true
+        cameraButton.isUserInteractionEnabled = false
+        
+        postView.isHidden = false
+        captionField.isHidden = false
+        captionField.isUserInteractionEnabled = true
+        postButton.isHidden = false
+        postButton.isUserInteractionEnabled = true
         
         dismiss(animated: true, completion: nil)
     }

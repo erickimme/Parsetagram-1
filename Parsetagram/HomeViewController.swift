@@ -16,6 +16,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var posts: [Post]?
     var images: [UIImage]?
     
+    var user: PFUser?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
@@ -77,9 +79,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.usernameLabel.text = post?.username
         cell.captionLabel.text = post?.caption
         cell.postView.image = post?.post
+        cell.profileView.image = post?.profileImage
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onTap(sender:)))
+        cell.usernameLabel.isUserInteractionEnabled = true
+        cell.profileView.isUserInteractionEnabled = true
+        cell.usernameLabel.addGestureRecognizer(tapGestureRecognizer)
+        cell.profileView.addGestureRecognizer(tapGestureRecognizer)
+        cell.dateLabel.text = post?.date
         
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
@@ -100,15 +114,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.show(alert, sender: nil)
         }
     }
+    
+    func onTap(sender: UITapGestureRecognizer) {
+        let location = sender.location(in: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: location)
+        self.user = posts?[(posts?.count)! - 1 - (indexPath?.row)!].user
+        performSegue(withIdentifier: "profileSegue", sender: nil)
+    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destination = segue.destination as! ProfileViewController
+        destination.user = self.user
     }
-    */
+    
 
 }

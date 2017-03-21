@@ -13,6 +13,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var postView: UIImageView!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var profileView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

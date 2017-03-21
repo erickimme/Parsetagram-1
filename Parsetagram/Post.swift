@@ -13,17 +13,20 @@ import MBProgressHUD
 class Post: NSObject {
     
     var username: String = ""
-    var post: UIImage = #imageLiteral(resourceName: "iconmonstr-picture-1-64")
+    var post: UIImage?
     //var post: UIImageView!
     var caption: String = ""
     var likesCount: Int = 0
     var commentsCount: Int = 0
+    var profileImage: UIImage = #imageLiteral(resourceName: "iconmonstr-user-1-32-2")
+    var user: PFUser?
+    var date: String?
     
     init(_ post: PFObject, _ tableView: UITableView) {
         super.init()
-        self.post = #imageLiteral(resourceName: "iconmonstr-picture-1-64")
-        let user = post["author"] as? PFUser
-        if let user = user {
+        
+        self.user = post["author"] as? PFUser
+        if let user = self.user {
             try! user.fetchIfNeeded()
             self.username = user.username!
         }
@@ -34,7 +37,27 @@ class Post: NSObject {
             //MBProgressHUD.showAdded(to: self.post, animated: true)
             getPost(file, tableView)
         }
+        if let file = user?.value(forKey: "photo") as? PFFile {
+            file.getDataInBackground(block: { (data: Data?, error: Error?) in
+                if error == nil {
+                    self.profileImage = UIImage(data: data!)!
+                }
+            })
+        }
+        let secondsBetween = Int(Date().timeIntervalSince(post.createdAt!))
         
+        if secondsBetween < 60 {
+            self.date = "1m"
+        }
+        else if secondsBetween < 3600 {
+            self.date = "\(secondsBetween / 60)m"
+        }
+        else if secondsBetween < 86400 {
+            self.date = "\(secondsBetween / 3600)h"
+        }
+        else {
+            self.date = "\(secondsBetween / 86400)d"
+        }
     }
     
     func getPost(_ file: PFFile, _ tableView: UITableView) {

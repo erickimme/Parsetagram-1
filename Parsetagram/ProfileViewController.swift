@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var profileView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     var user: PFUser!
     
@@ -22,25 +23,44 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        profileView.layer.cornerRadius = profileView.frame.width / 2
+        profileView.clipsToBounds = true
         
-        if let _ = tabBarController {
+        if tabBarController?.selectedIndex == 2 {
             user = PFUser.current()
         }
         
         usernameLabel.text = user.username
-        if let file = user["photo"] as? PFFile {
+        if let file = user.value(forKey: "photo") as? PFFile {
             file.getDataInBackground(block: { (data: Data?, error: Error?) in
                 if error == nil {
                     self.profileView.image = UIImage(data: data!)!
                 }
             })
         }
+        
+        Post.getImages(for: user, success: { (posts: [PFObject]) in
+            self.photos = []
+            for post in posts {
+                if let file = post["media"] as? PFFile {
+                    self.getPost(file, self.collectionView)
+                }
+            }
+            self.collectionView.reloadData()
+        }) { (error: Error) in
+            print(error.localizedDescription)
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        flowLayout.scrollDirection = .vertical
+        flowLayout.minimumLineSpacing = 3
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onTap))
         profileView.isUserInteractionEnabled = true
@@ -53,11 +73,13 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! ProfileCollectionViewCell
+        
+        cell.photoView.image = photos[indexPath.row]
         
         return cell
     }
@@ -91,15 +113,35 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         //        let original = info[UIImagePickerControllerOriginalImage] as! UIImage!
         let edited = info[UIImagePickerControllerEditedImage] as! UIImage!
         
-        profileView.image = edited
+        profileView.image = resize(image: edited!, newSize: CGSize(width: 100, height: 100))
         
-        user["photo"] = Post.getPFFileFromImage(image: edited)
-        try! user.save()
+        user.setObject(Post.getPFFileFromImage(image: resize(image: edited!, newSize: CGSize(width: 100, height: 100)))!, forKey: "photo")
+        user.saveInBackground()
         
         dismiss(animated: true, completion: nil)
     }
     
     
+    func resize(image: UIImage, newSize: CGSize) -> UIImage {
+        let resizeImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        resizeImageView.contentMode = .scaleAspectFill
+        resizeImageView.image = image
+        
+        UIGraphicsBeginImageContext(resizeImageView.frame.size)
+        resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+    
+    func getPost(_ file: PFFile, _ collectionView: UICollectionView) {
+        file.getDataInBackground(block: { (data: Data?, error: Error?) in
+            if error == nil {
+                self.photos.append(UIImage(data: data!)!)
+                collectionView.reloadData()
+            }
+        })
+    }
     
     /*
     // MARK: - Navigation
