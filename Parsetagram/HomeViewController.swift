@@ -84,7 +84,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func getImages() {
-        Post.getImages(success: { (posts: [PFObject]) in
+        Post.getImages(for: nil, success: { (posts: [PFObject]) in
             var arr: [Post] = []
             for post in posts {
                 arr.append(Post(post, self.tableView))

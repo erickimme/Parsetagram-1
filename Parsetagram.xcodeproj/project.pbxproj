@@ -16,6 +16,7 @@
 		461E50141E725F8F00F96BD1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461E50131E725F8F00F96BD1 /* HomeViewController.swift */; };
 		461E50161E725F9F00F96BD1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461E50151E725F9F00F96BD1 /* ProfileViewController.swift */; };
 		461E50181E725FC700F96BD1 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461E50171E725FC700F96BD1 /* CaptureViewController.swift */; };
+		465DC1BF1E80C641007522F7 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465DC1BE1E80C641007522F7 /* ProfileCollectionViewCell.swift */; };
 		46FA6B381E750B0C00664C9B /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FA6B371E750B0C00664C9B /* PostTableViewCell.swift */; };
 		46FA6B3B1E7B91E200664C9B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FA6B3A1E7B91E200664C9B /* Post.swift */; };
 		7E3D8CF2EFF9C38C39B07CD8 /* Pods_Parsetagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDBE6DB34C5A5A0D83DBEBFD /* Pods_Parsetagram.framework */; };
@@ -34,6 +35,7 @@
 		461E50131E725F8F00F96BD1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		461E50151E725F9F00F96BD1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		461E50171E725FC700F96BD1 /* CaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
+		465DC1BE1E80C641007522F7 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		46FA6B371E750B0C00664C9B /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		46FA6B3A1E7B91E200664C9B /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		88F693944B2BB13BA05B9B6E /* Pods-Parsetagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parsetagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Parsetagram/Pods-Parsetagram.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				46FA6B371E750B0C00664C9B /* PostTableViewCell.swift */,
+				465DC1BE1E80C641007522F7 /* ProfileCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46FA6B381E750B0C00664C9B /* PostTableViewCell.swift in Sources */,
+				465DC1BF1E80C641007522F7 /* ProfileCollectionViewCell.swift in Sources */,
 				461E50121E6F80E200F96BD1 /* LoginViewController.swift in Sources */,
 				461E50181E725FC700F96BD1 /* CaptureViewController.swift in Sources */,
 				46FA6B3B1E7B91E200664C9B /* Post.swift in Sources */,

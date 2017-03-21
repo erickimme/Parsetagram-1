@@ -9,17 +9,57 @@
 import UIKit
 import Parse
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var profileView: UIImageView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
+    
+    var user: PFUser!
+    
+    var photos: [UIImage] = []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        if let _ = tabBarController {
+            user = PFUser.current()
+        }
+        
+        usernameLabel.text = user.username
+        if let file = user["photo"] as? PFFile {
+            file.getDataInBackground(block: { (data: Data?, error: Error?) in
+                if error == nil {
+                    self.profileView.image = UIImage(data: data!)!
+                }
+            })
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onTap))
+        profileView.isUserInteractionEnabled = true
+        profileView.addGestureRecognizer(gestureRecognizer)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath)
+        
+        return cell
     }
     
     @IBAction func signOutTapped(_ sender: Any) {
@@ -36,7 +76,31 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-
+    
+    func onTap() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        
+        show(imagePicker, sender: nil)
+    }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        //        let original = info[UIImagePickerControllerOriginalImage] as! UIImage!
+        let edited = info[UIImagePickerControllerEditedImage] as! UIImage!
+        
+        profileView.image = edited
+        
+        user["photo"] = Post.getPFFileFromImage(image: edited)
+        try! user.save()
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 

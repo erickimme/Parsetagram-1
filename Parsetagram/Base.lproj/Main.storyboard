@@ -336,13 +336,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vhw-xi-ayM">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconmonstr-user-1-32-2" translatesAutoresizingMaskIntoConstraints="NO" id="vhw-xi-ayM">
                                 <rect key="frame" x="16" y="72" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="7KG-8C-zJw" appends="YES" id="m1u-Ja-3d3"/>
-                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JzX-k7-XJT">
                                 <rect key="frame" x="124" y="72" width="88" height="28"/>
@@ -362,7 +359,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="VoM-f8-A7z">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="VoM-f8-A7z">
                                         <rect key="frame" x="0.0" y="0.0" width="176" height="176"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -394,6 +391,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="z88-z1-b4T" id="7hN-UX-yCl"/>
+                        <outlet property="profileView" destination="vhw-xi-ayM" id="1bJ-nf-x9d"/>
+                        <outlet property="tapGestureRecognizer" destination="7KG-8C-zJw" id="kG2-eX-mnL"/>
+                        <outlet property="usernameLabel" destination="JzX-k7-XJT" id="k1i-UQ-HrG"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="logoutSegue" id="5vH-cZ-Ymr"/>
                     </connections>
                 </viewController>
@@ -426,7 +427,7 @@
         <scene sceneID="ges-jj-TZg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z7h-Ae-bSN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="jbP-mC-Fzz"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="iconmonstr-user-1-32-2" id="jbP-mC-Fzz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="e6m-x2-wiY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -445,5 +446,6 @@
     <resources>
         <image name="iconmonstr-photo-camera-9-240" width="240" height="240"/>
         <image name="iconmonstr-picture-17-240" width="240" height="240"/>
+        <image name="iconmonstr-user-1-32-2" width="32" height="32"/>
     </resources>
 </document>
