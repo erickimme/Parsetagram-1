@@ -18,7 +18,7 @@ class Post: NSObject {
     var caption: String = ""
     var likesCount: Int = 0
     var commentsCount: Int = 0
-    var profileImage: UIImage = #imageLiteral(resourceName: "iconmonstr-user-1-32-2")
+    var profileImage: UIImage = #imageLiteral(resourceName: "profile_tab")
     var user: PFUser?
     var date: String?
     
@@ -121,6 +121,9 @@ class Post: NSObject {
         if let user = user {
             query.whereKey("author", equalTo: user)
         }
+
+        query.order(byDescending: "createdAt")
+        query.limit = 20
         
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
             if error != nil {

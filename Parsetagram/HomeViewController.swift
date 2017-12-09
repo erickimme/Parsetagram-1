@@ -17,6 +17,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var images: [UIImage]?
     
     var user: PFUser?
+
+    let refreshControl = UIRefreshControl()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -37,11 +39,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.delegate = self
         tableView.dataSource = self
+
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @objc func refreshTable() {
+        refreshControl.beginRefreshing()
+        getImages()
     }
     
     
@@ -56,7 +66,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
         
-        let post = posts?[(posts?.count)! - indexPath.row - 1]
+        let post = posts?[indexPath.row]
         
 //        let user = post?["author"] as? PFUser
 //        try! user?.fetchIfNeeded()
@@ -94,11 +104,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+
+        performSegue(withIdentifier: "postSegue", sender: posts?[indexPath.row])
     }
     
     
     func getImages() {
         Post.getImages(for: nil, success: { (posts: [PFObject]) in
+            if self.refreshControl.isRefreshing {
+                self.refreshControl.endRefreshing()
+            }
             var arr: [Post] = []
             for post in posts {
                 arr.append(Post(post, self.tableView))
@@ -107,6 +122,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             MBProgressHUD.hide(for: self.view, animated: true)
             self.tableView.reloadData()
         }) { (error: Error) in
+            if self.refreshControl.isRefreshing {
+                self.refreshControl.endRefreshing()
+            }
             let alert = UIAlertController(title: "An Error Occurred", message: error.localizedDescription, preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
             
@@ -115,7 +133,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func onTap(sender: UITapGestureRecognizer) {
+    @objc func onTap(sender: UITapGestureRecognizer) {
         let location = sender.location(in: self.tableView)
         let indexPath = self.tableView.indexPathForRow(at: location)
         self.user = posts?[(posts?.count)! - 1 - (indexPath?.row)!].user
@@ -127,8 +145,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! ProfileViewController
-        destination.user = self.user
+        if let destination = segue.destination as? ProfileViewController {
+            destination.user = self.user
+        } else if let destination = segue.destination as? PostViewController {
+            if let sender = sender as? Post {
+                destination.post = sender
+            }
+        }
     }
     
 

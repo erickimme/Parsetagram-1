@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             with: ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
                 configuration.applicationId = "parsetagram"
                 configuration.clientKey = "alksdjf89euh3iofwaskjdh87ewu4"  // set to nil assuming you have not set clientKey
-                configuration.server = "https://parsetagram.herokuapp.com/parse"
+                configuration.server = "https://obscure-harbor-95626.herokuapp.com/parse"
             })
         )
         

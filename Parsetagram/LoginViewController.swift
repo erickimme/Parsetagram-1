@@ -28,8 +28,8 @@ class LoginViewController: UIViewController {
     @IBAction func loginTapped(_ sender: Any) {
         MBProgressHUD.showAdded(to: self.view, animated: true)
         PFUser.logInWithUsername(inBackground: usernameField.text!, password: passwordField.text!) { (user: PFUser?, error: Error?) in
+            MBProgressHUD.hide(for: self.view, animated: true)
             if user != nil {
-                MBProgressHUD.hide(for: self.view, animated: true)
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             }
             else {
